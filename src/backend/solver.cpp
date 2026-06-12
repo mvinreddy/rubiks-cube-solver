@@ -39,12 +39,29 @@ struct RubiksCube {
     }
 
     void applyMove(const std::string& move) {
-        // A production application maps structural piece indexes across all faces.
-        // For baseline structural testing, turning 'U' rotates the top face array matrix
         if (move == "U") {
-            rotateFaceClockwise(0); // Rotates Up face
-            // Note: In final implementation, also cycle adjacent layers of F, R, B, L faces here
+        rotateFaceClockwise(0);
+        // Cycle the top rows of the adjacent faces: F -> L -> B -> R
+        char temp[3] = {state[36], state[37], state[38]}; // Save Front top row
+        for(int i=0; i<3; i++) {
+            state[36+i] = state[18+i]; // Right to Front
+            state[18+i] = state[45+i]; // Back to Right
+            state[45+i] = state[27+i]; // Left to Back
+            state[27+i] = temp[i];     // Saved Front to Left
         }
+    }
+    else if (move == "D") {
+        rotateFaceClockwise(1);
+        // Cycle the bottom rows of the adjacent faces: F -> R -> B -> L
+        char temp[3] = {state[42], state[43], state[44]};
+        for(int i=0; i<3; i++) {
+            state[42+i] = state[27+6+i];
+            state[27+6+i] = state[45+6+i];
+            state[45+6+i] = state[18+6+i];
+            state[18+6+i] = temp[i];
+        }
+    }
+    // Implement remaining variations for R, L, F, B following similar geometric tracks...
     }
 };
 
