@@ -1,0 +1,11 @@
+# Emscripten compilation outputs we want to regenerate locally
+src/frontend/solver.js
+src/frontend/solver.wasm
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
