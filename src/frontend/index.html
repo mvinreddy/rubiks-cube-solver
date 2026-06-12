@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D WebAssembly Rubik's Cube Solver</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+    <div id="ui-container">
+        <h1>Korf's IDA* Rubik's Cube Solver</h1>
+        <div id="canvas-wrapper"></div>
+        
+        <div class="control-panel">
+            <button id="scramble-btn">Scramble Cube</button>
+            <button id="solve-btn">Compute Solution</button>
+            <button id="next-btn" disabled>Next Move Step</button>
+        </div>
+        <div id="status-display">Wasm Engine Status: Initializing...</div>
+    </div>
+
+    <script src="solver.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
